@@ -1,0 +1,9 @@
+<p class="publish clearfix"><%= link_to '谱曲', new_song_path %></p>
+
+<% @songs.each do |song| %>
+    <%= render :partial => 'layouts/list_item', :locals => {:item => song} -%>
+<% end %>
+<div class="panel-footer clearfix">
+  <%= will_paginate @songs %>
+  共 <%= @songs.total_entries %> 条
+</div>

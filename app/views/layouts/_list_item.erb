@@ -1,0 +1,40 @@
+<div class="item">
+  <div class="left">
+
+  </div>
+  <div class="right">
+    <p class="title"><%= link_to item.title, item -%></p>
+
+    <p class="description">
+      <%= item.content.to_s.truncate(107) -%>
+    </p>
+
+    <p class="bottom">
+      由
+      <%= item.user.try :name -%>
+      于
+      <%= item.created_at.strftime('%Y-%m-%d %H:%M:%S') -%>
+      发布；
+      收到
+      <%= link_to item.comments_count.to_i, item -%>
+      条评论，
+      <%= link_to item.likes_count.to_i, item -%>
+      条喜欢。
+      &nbsp;&nbsp;
+      作者：<%= link_to item.author, item.author_class -%>
+      <span style="float: right;">
+              <% if item.class==Poetry %>
+          <%= link_to '编辑', edit_poetry_path(item) if item.can_edit?(current_user) %>
+      <% elsif item.class==Prose  %>
+          <%= link_to '编辑', edit_prose_path(item) if item.can_edit?(current_user) %>
+      <% elsif item.class==Piece  %>
+          <%= link_to '编辑', edit_piece_path(item) if item.can_edit?(current_user) %>
+      <% elsif item.class==Song  %>
+          <%= link_to '编辑', edit_song_path(item) if item.can_edit?(current_user) %>
+      <% end %>
+        &nbsp;
+        <%= link_to '删除', item, method: :delete, data: {confirm: 'Are you sure?'} if item.can_delete?(current_user) %>
+      </span>
+    </p>
+  </div>
+</div>

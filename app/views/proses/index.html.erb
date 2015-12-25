@@ -1,0 +1,8 @@
+<p class="publish clearfix"><%= link_to '分享美文', new_prose_path %></p>
+<% @proses.each do |song| %>
+    <%= render :partial => 'layouts/list_item', :locals => {:item => song} -%>
+<% end %>
+<div class="panel-footer clearfix">
+  <%= will_paginate @proses %>
+  共 <%= @proses.total_entries %> 条
+</div>

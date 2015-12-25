@@ -1,0 +1,36 @@
+<div class="detail">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>昵称:</b>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <b>邮箱:</b>
+    <%= @user.email %>
+  </p>
+
+  <p>
+    <b>注册时间:</b>
+    <%= @user.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+  </p>
+
+  <p>
+    <b>登陆次数:</b>
+    <%= @user.sign_in_count %>
+  </p>
+
+  <p>
+    <b>最后登陆时间:</b>
+    <%= @user.last_sign_in_at.strftime('%Y-%m-%d %H:%M:%S') if @user.last_sign_in_at.present? %>
+  </p>
+
+  <p>
+    <b>最后登陆IP:</b>
+    <%= @user.last_sign_in_ip %>
+  </p>
+
+  <%= link_to '编辑', edit_user_path(@user) if @user.can_edit?(current_user) %> |
+  <%= link_to '返回', users_path %>
+</div>

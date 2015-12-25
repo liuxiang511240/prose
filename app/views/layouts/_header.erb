@@ -1,0 +1,17 @@
+<div id="header">
+  <h2>
+    诗词歌赋
+    <span style="float: right;font-size:15px;font-weight: normal;">
+          <% if current_user %>
+      欢迎您！
+          <%= current_user.name -%>
+          &nbsp;
+          <%= link_to '退出', destroy_user_session_path, :method => :delete -%>
+              <% else %>
+<%= link_to '登陆', new_session_path(User.new) %>
+          &nbsp;
+          <%= link_to "注册", new_registration_path(User.new) %>
+      <% end %>
+    </span>
+  </h2>
+</div>

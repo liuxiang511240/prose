@@ -1,0 +1,10 @@
+<p class="publish clearfix"><%= link_to '发杂谈', new_piece_path %></p>
+<% if @pieces.present? %>
+    <% @pieces.each do |song| %>
+        <%= render :partial => 'layouts/list_item', :locals => {:item => song} -%>
+    <% end %>
+    <div class="panel-footer clearfix">
+      <%= will_paginate @pieces %>
+      共 <%= @pieces.total_entries %> 条
+    </div>
+<% end %>

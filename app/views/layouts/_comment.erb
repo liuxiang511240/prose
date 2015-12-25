@@ -1,0 +1,11 @@
+<div class="comment">
+  <p class="comment-top">
+    <%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') -%>
+    <%= comment.user.try(:name) -%>
+    说：
+  </p>
+
+  <p>
+    <%= comment.content -%>
+  </p>
+</div>

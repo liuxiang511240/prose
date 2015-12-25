@@ -1,0 +1,26 @@
+<div class="detail">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <b>姓名:</b>
+    <%= @author.name %>
+  </p>
+
+  <p>
+    <b>介绍:</b> <br/>
+    <%= @author.description %>
+  </p>
+
+  <p>
+    <b>朝代:</b>
+    <%= @author.dynasty %>
+  </p>
+
+  <p>
+    <b>生卒:</b>
+    <%= @author.birthday %>
+  </p>
+  <%= link_to '编辑', edit_author_path(@author) if @author.can_edit?(current_user) %> |
+  <%= link_to '返回', authors_path %>
+</div>
+

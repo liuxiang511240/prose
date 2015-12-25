@@ -1,0 +1,24 @@
+<%= render :partial => 'layouts/sidebar', :locals => {:author => @prose.author_class} -%>
+<div class="detail">
+  <p id="notice"><%= notice %></p>
+
+  <p class="title">
+    <%= @prose.title %>
+  </p>
+
+  <p class="source">
+    由
+    <%= @prose.user.try(:name) -%>
+    于
+    <%= @prose.created_at.strftime('%Y-%m-%d %H:%M:%S') -%>
+    发布
+  </p>
+
+  <p>
+    <%= @prose.content %>
+  </p>
+
+  <%= link_to '编辑', edit_prose_path(@prose) if @prose.can_edit?(current_user) %> |
+  <%= link_to '返回', proses_path %>
+</div>
+<%= render :partial => 'layouts/comments', :locals => {:subject => @prose, :genre => 2} -%>

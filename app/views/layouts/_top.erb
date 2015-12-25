@@ -1,0 +1,11 @@
+<ul>
+  <li class="<%= controller_name=='home' ? 'select' : '' -%>"><%= link_to '首页', '/home' -%></li>
+  <li class="<%= controller_name=='poetries' ? 'select' : '' -%>"><%= link_to '诗词', '/poetries' -%></li>
+  <li class="<%= controller_name=='proses' ? 'select' : '' -%>"><%= link_to '美文', '/proses' -%></li>
+  <li class="<%= controller_name=='pieces' ? 'select' : '' -%>"><%= link_to '杂谈', '/pieces' -%></li>
+  <li class="<%= controller_name=='songs' ? 'select' : '' -%>"><%= link_to '歌曲', '/songs' -%></li>
+  <li class="<%= controller_name=='authors' ? 'select' : '' -%>"><%= link_to '作者', '/authors' -%></li>
+  <% if current_user and current_user.is_admin? %>
+      <li class="<%= controller_name=='users' ? 'select' : '' -%>"><%= link_to '用户', '/users' -%></li>
+  <% end %>
+</ul>

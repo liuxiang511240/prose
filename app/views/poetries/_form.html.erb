@@ -1,0 +1,29 @@
+<%= form_for(@poetry) do |f| %>
+    <% if @poetry.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@poetry.errors.count, "error") %> prohibited this poetry from being saved:</h2>
+
+          <ul>
+            <% @poetry.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label '标题' %>：
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label '作者' %>：
+      <%= f.text_field :author %>
+    </div>
+    <div class="field">
+      <%= f.label '内容' %>
+      <br>
+      <%= f.text_area :content, :size => '87x15' %>
+    </div>
+    <div class="actions">
+      <%= f.submit '确定' %>
+    </div>
+<% end %>

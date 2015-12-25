@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>赋美</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <link rel="stylesheet" type="text/css" href="/simditor/styles/font-awesome.css"/>
+  <link rel="stylesheet" type="text/css" href="/simditor/styles/simditor.css"/>
+  <script type="text/javascript" src="/simditor/scripts/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/simditor/scripts/js/module.js"></script>
+  <script type="text/javascript" src="/simditor/scripts/js/uploader.js"></script>
+  <script type="text/javascript" src="/simditor/scripts/js/simditor.js"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="container">
+  <%= render :partial => 'layouts/header' -%>
+  <p id="notice"><%= notice %></p>
+
+  <p id="alert"><%= alert %></p>
+
+  <div class="inner wrap clearfix">
+    <div class="inner_top"><%= render :partial => 'layouts/top' -%></div>
+    <div class="content clearfix"><%= yield %></div>
+  </div>
+  <%= render :partial => 'layouts/footer' -%>
+</div>
+</body>
+</html>

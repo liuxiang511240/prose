@@ -1,0 +1,34 @@
+<%= form_for(@prose) do |f| %>
+    <% if @prose.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@prose.errors.count, "error") %> prohibited this prose from being saved:</h2>
+
+          <ul>
+            <% @prose.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label '标题' %>：
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label '作者' %>：
+      <%= f.text_field :author %>
+    </div>
+    <div class="field">
+      <%= f.label '内容' %>
+      <br>
+      <!--<textarea id="editor" placeholder="这里输入内容" autofocus></textarea>-->
+      <%= f.text_area :content, :size => '87x15', :id => 'editor' %>
+    </div>
+    <div class="actions">
+      <%= f.submit '确定' %>
+    </div>
+<% end %>
+
+<script>
+//    var editor = new Simditor({textarea: $('#editor')});
+</script>

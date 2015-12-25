@@ -1,0 +1,48 @@
+<div class="section">
+  <div class="top">诗词
+    <span style="float: right;font-size:12px;font-weight: normal;">
+      <%= link_to '更多...', poetries_path -%>
+    </span>
+  </div>
+  <div class="middle">
+    <% @poetries.each_with_index do |song, i| %>
+        <%= render :partial => 'layouts/item', :locals => {:item => song, :is_last => @poetries.size==i+1} -%>
+    <% end %>
+  </div>
+</div>
+<div class="section">
+  <div class="top">美文
+      <span style="float: right;font-size:12px;font-weight: normal;">
+      <%= link_to '更多...', proses_path -%>
+    </span>
+  </div>
+  <div class="middle">
+    <% @proses.each_with_index do |song, i| %>
+        <%= render :partial => 'layouts/item', :locals => {:item => song, :is_last => @proses.size==i+1} -%>
+    <% end %>
+  </div>
+</div>
+<div class="section">
+  <div class="top">杂谈
+      <span style="float: right;font-size:12px;font-weight: normal;">
+      <%= link_to '更多...', pieces_path -%>
+    </span>
+  </div>
+  <div class="middle">
+    <% @pieces.each_with_index do |song, i| %>
+        <%= render :partial => 'layouts/item', :locals => {:item => song, :is_last => @pieces.size==i+1} -%>
+    <% end %>
+  </div>
+</div>
+<div class="section">
+  <div class="top">歌曲
+      <span style="float: right;font-size:12px;font-weight: normal;">
+      <%= link_to '更多...', songs_path -%>
+    </span>
+  </div>
+  <div class="middle">
+    <% @songs.each_with_index do |song, i| %>
+        <%= render :partial => 'layouts/item', :locals => {:item => song, :is_last => @songs.size==i+1} -%>
+    <% end %>
+  </div>
+</div>
