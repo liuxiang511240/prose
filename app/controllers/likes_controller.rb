@@ -5,7 +5,7 @@ class LikesController < ApplicationController
   respond_to :html
   
   def index
-    @likes = Like.all.sort { |x, y| y.created_at <=> x.created_at }.paginate(:per_page => 10, :page => params[:page]||1)
+    @likes = Like.paginate(:per_page => 10, :page => params[:page]||1).order(id: :desc)
   end
   
   def show

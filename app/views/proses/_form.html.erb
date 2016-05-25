@@ -24,6 +24,12 @@
       <!--<textarea id="editor" placeholder="这里输入内容" autofocus></textarea>-->
       <%= f.text_area :content, :size => '87x15', :id => 'editor' %>
     </div>
+    <% if current_user.is_admin? %>
+        <div class="field">
+          <%= f.label '精华' %>：
+          <%= f.select :excellent, [['否', 0], ['是', 1]], {} %>
+        </div>
+    <% end %>
     <div class="actions">
       <%= f.submit '确定' %>
     </div>

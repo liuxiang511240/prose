@@ -1,15 +1,7 @@
 #评论
 # coding: utf-8
-class Comment
-  include Mongoid::Document
-  include Mongoid::BaseModel
-  include Mongoid::SoftDelete
-  include Mongoid::Timestamps
-  include Mongoid::CounterCache
-  field :content, type: String, default: ''
-  field :outer_id, type: String
-  field :genre, type: Integer
-  field :user_id, type: String
+class Comment < ActiveRecord::Base
+  include SoftDelete
   validates_presence_of :content, :message => 'content is must!'
   validates_length_of :content, :maximum => 5000, :message => 'Up to 5000 characters'
 
@@ -36,6 +28,9 @@ class Comment
     _class = outer_class
     return if _class.blank?
     _class.comments_count = _class.comments_count.to_i+1
+    _class.last_comment_id = self.id
+    _class.last_commented_user_name = user.name
+    _class.commented_at = Time.now
     _class.save
   end
 

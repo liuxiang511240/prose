@@ -5,7 +5,7 @@ class AuthorsController < ApplicationController
   respond_to :html
 
   def index
-    @authors = Author.all.sort { |x, y| y.created_at <=> x.created_at }.paginate(:per_page => 10, :page => params[:page]||1)
+    @authors = Author.paginate(:per_page => 10, :page => params[:page]||1).order(id: :desc)
   end
 
   def show

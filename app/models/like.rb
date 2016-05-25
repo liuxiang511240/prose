@@ -1,12 +1,6 @@
 #喜欢
-class Like
-  include Mongoid::Document
-  include Mongoid::BaseModel
-  include Mongoid::Timestamps
-  include Mongoid::CounterCache
-  field :outer_id, type: String
-  field :genre, type: Integer
-  field :user_id, type: String
+class Like < ActiveRecord::Base
+  include SoftDelete
   attr_accessible :outer_id, :genre, :user_id, :deleted_at, :created_at, :updated_at
   belongs_to :user, inverse_of: :likes
   validates_uniqueness_of :outer_id, scope: [:user_id, :genre], message: 'already liked!'

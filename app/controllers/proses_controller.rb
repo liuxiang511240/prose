@@ -5,12 +5,12 @@ class ProsesController < ApplicationController
   respond_to :html
 
   def index
-    @proses = Prose.all.sort { |x, y| y.created_at <=> x.created_at }.paginate(:per_page => 10, :page => params[:page]||1)
+    @proses = Prose.paginate(:per_page => 10, :page => params[:page]||1).order(id: :desc)
   end
 
   def show
     @comment = Comment.new
-    @comments = Comment.where(outer_id: @prose.id, genre: 2).includes(:user).sort { |x, y| y.created_at <=> x.created_at }
+    @comments = Comment.where(outer_id: @prose.id, genre: 2).includes(:user).order(id: :desc)
   end
 
   def new

@@ -5,12 +5,12 @@ class SongsController < ApplicationController
   respond_to :html
 
   def index
-    @songs = Song.all.sort { |x, y| y.created_at <=> x.created_at }.paginate(:per_page => 10, :page => params[:page]||1)
+    @songs = Song.paginate(:per_page => 10, :page => params[:page]||1).order(id: :desc)
   end
 
   def show
     @comment = Comment.new
-    @comments = Comment.where(outer_id: @song.id, genre: 4).includes(:user).sort { |x, y| y.created_at <=> x.created_at }
+    @comments = Comment.where(outer_id: @song.id, genre: 4).includes(:user).order(id: :desc)
   end
 
   def new

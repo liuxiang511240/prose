@@ -1,16 +1,7 @@
 #作者
 # coding: utf-8
-class Author
-  include Mongoid::Document
-  include Mongoid::BaseModel
-  include Mongoid::SoftDelete
-  include Mongoid::Timestamps
-  
-  field :name, type: String, default: ''
-  field :face, type: String, default: ''
-  field :dynasty, type: String, default: ''
-  field :birthday, type: String, default: ''
-  field :description, type: String, default: ''
+class Author < ActiveRecord::Base
+  include SoftDelete
   validates_presence_of :name, :message => 'name is must!'
   # validates_presence_of :birthday, :message => 'birthday is must!'
   # validates_presence_of :description, :message => 'description is must!'
