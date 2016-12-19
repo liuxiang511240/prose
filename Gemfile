@@ -37,6 +37,7 @@ gem 'bootstrap-will_paginate'
 gem 'annotate'
 gem 'simditor'
 gem 'therubyracer'
+gem 'nokogiri'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
