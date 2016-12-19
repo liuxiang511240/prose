@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_filter :auth_wechat
   before_filter :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -32,5 +33,18 @@ class ApplicationController < ActionController::Base
     # devise_parameter_sanitizer.for(:account_update) do |u|
     #   u.permit(:username, :email, :password, :password_confirmation, :phone, :validate_username, :avatar, :avatar_cache, :remove_avatar, :current_password)
     # end
+  end
+
+  def auth_wechat
+    if params[:signature].present? and params[:timestamp].present? and params[:nonce].present?
+      if check_signature?(params[:signature], params[:timestamp], params[:nonce])
+        return render text: params[:echostr]
+      end
+    end
+  end
+
+  private
+  def check_signature?(signature, timestamp, nonce)
+    Digest::SHA1.hexdigest([timestamp, nonce, "api_wechat"].sort.join) == signature
   end
 end
