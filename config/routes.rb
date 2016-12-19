@@ -17,6 +17,7 @@ Prose1::Application.routes.draw do
 
   resources :users
   resources :home
+  get '/test/wechat', to: 'wechat_supports#auth_wechat'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
